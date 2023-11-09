@@ -13,17 +13,19 @@ export function addItemToCart(item: ShopItem) {
 }
 
 export function removeItemFromCart(itemId: number) {
-  // @ts-ignore
-  $cart.setKey(itemId, undefined);
+	// @ts-ignore
+	$cart.setKey(itemId, undefined);
 }
 
 export const subtotal = computed($cart, (entries) => {
-  let subtotal = 0;
-  Object.values(entries).forEach((entry) => {
-    if (!entry) {
-      return;
-    }
+	let subtotal = 0;
+	Object.values(entries).forEach((entry) => {
+		if (!entry) {
+			return;
+		}
 
-    subtotal += entry.item.price * entry.quantity;
-  })
-})
+		subtotal += entry.item.price * entry.quantity;
+	});
+
+	return subtotal;
+});
