@@ -1,9 +1,14 @@
-import { defineConfig } from 'astro/config';
-
+import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
-import solidJs from "@astrojs/solid-js";
+import solid from "@astrojs/solid-js";
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [react(), solidJs()]
+	integrations: [
+		react({
+			include: ["**/react/*"],
+		}),
+		solid({
+			include: ["**/solid/*"],
+		}),
+	],
 });
